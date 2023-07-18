@@ -10,6 +10,10 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -39,6 +43,34 @@ Key features of the application.
 - **animals' owners**
 - **clinic employees**
 - **visits**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+
+- PostgreSQL.
+- Code Editor.
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-folder
+  gh repo clone Nahid1911/vet_clinic_database
+```
+
+### Install
+
+- Install <a href="https://www.postgresql.org/">PostgreSQL</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
