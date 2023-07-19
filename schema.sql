@@ -7,6 +7,8 @@ date_of_birth DATE,
 escape_attempts INT,
 neutered BOOLEAN,
 weight_kg DECIMAL,
-species VARCHAR(255),
 PRIMARY KEY (id)
 );
+
+ALTER TABLE animals
+ADD species VARCHAR(255);
