@@ -24,24 +24,24 @@ BEGIN;
 COMMIT;
 
 BEGIN;
- UPDATE animals
- SET species = CASE WHEN name LIKE '%mon' THEN 'digimon' ELSE 'pokemon' END;
+UPDATE animals
+SET species = CASE WHEN name LIKE '%mon' THEN 'digimon' ELSE 'pokemon' END;
 COMMIT;
 
 BEGIN;
-  SAVEPOINT sp1;
-  DROP TABLE animals;
-  SELECT * FROM animals;
-  ROLLBACK TO sp1;
-  SELECT * FROM animals;
+SAVEPOINT sp1;
+DELETE FROM animals;
+SELECT * FROM animals;
+ROLLBACK TO sp1;
+SELECT * FROM animals;
 COMMIT;
 
 BEGIN;
- DELETE FROM animals WHERE date_of_birth > '2022-01-01';
- SAVEPOINT sp1;
- UPDATE animals SET weight_kg = weight_kg * -1;
- ROLLBACK TO sp1;
- UPDATE animals SET weight_kg = weight_kg * -1;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SAVEPOINT sp1;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO sp1;
+UPDATE animals SET weight_kg = CASE WHEN weight_kg < 0 THEN weight_kg * -1 ELSE weight_kg END;
 COMMIT;
 
 
