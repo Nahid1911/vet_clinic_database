@@ -15,3 +15,31 @@ SELECT * FROM animals WHERE neutered = true;
 SELECT * FROM animals WHERE name NOT LIKE 'Gabumon';
 
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+BEGIN;
+ SAVEPOINT sp1;
+ UPDATE animals
+ SET species = 'unspecified';
+ ROLLBACK TO sp1;
+COMMIT;
+
+BEGIN;
+ UPDATE animals
+ SET species = CASE WHEN name LIKE '%mon' THEN 'digimon' ELSE 'pokemon' END;
+COMMIT;
+
+BEGIN;
+  SAVEPOINT sp1;
+  DROP TABLE animals;
+  SELECT * FROM animals;
+  ROLLBACK TO sp1;
+  SELECT * FROM animals;
+COMMIT;
+
+BEGIN;
+ DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+ SAVEPOINT sp1;
+ UPDATE animals SET weight_kg = weight_kg * -1;
+ ROLLBACK TO sp1;
+ UPDATE animals SET weight_kg = weight_kg * -1;
+COMMIT;
