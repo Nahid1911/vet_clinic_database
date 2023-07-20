@@ -99,3 +99,21 @@ SELECT a.name, a.escape_attempts, o.full_name FROM animals AS a INNER JOIN owner
 
 -- Who owns the most animals?
 SELECT COUNT(a.name) AS anim_qty, o.full_name FROM animals AS a INNER JOIN owners AS o ON a.owners_id = o.id GROUP BY o.full_name ORDER BY anim_qty DESC LIMIT 1;
+
+
+
+----------------------Day-4-Project--------------------------------
+
+-- Who was the last animal seen by William Tatcher?
+SELECT a.name AS last_visited_animal FROM visits JOIN vets ON visits.vets_id = vets.id JOIN animals AS a ON visits.animals_id = a.id WHERE vets.name = 'William Tatcher' ORDER BY visit_date DESC LIMIT 1;
+
+
+-- How many different animals did Stephanie Mendez see?
+
+-- List all vets and their specialties, including vets with no specialties.
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+-- What animal has the most visits to vets?
+-- Who was Maisy Smith's first visit?
+-- Details for most recent visit: animal information, vet information, and date of visit.
+-- How many visits were with a vet that did not specialize in that animal's species?
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
