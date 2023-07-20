@@ -17,37 +17,53 @@ SELECT * FROM animals WHERE name NOT LIKE 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 BEGIN;
- SAVEPOINT sp1;
- UPDATE animals
- SET species = 'unspecified';
- ROLLBACK TO sp1;
-COMMIT;
-
-BEGIN;
+SAVEPOINT sp1;
 UPDATE animals
-SET species = CASE WHEN name LIKE '%mon' THEN 'digimon' ELSE 'pokemon' END;
+SET species = 'unspecified'
+SELECT species from animals;
+ROLLBACK TO sp1;
+SELECT species from animals;
 COMMIT;
 
 BEGIN;
+SELECT name, species from animals;
+UPDATE animals
+SET species = CASE WHEN name LIKE '%mon' THEN 'digimon' WHEN species IS NULL THEN 'pokemon' END;
+SELECT name, species from animals;
+COMMIT;
+SELECT name, species from animals;
+
+
+BEGIN;
+SELECT species from animals;
 SAVEPOINT sp1;
 DELETE FROM animals;
 SELECT * FROM animals;
 ROLLBACK TO sp1;
 SELECT * FROM animals;
 COMMIT;
+SELECT * FROM animals;
+
 
 BEGIN;
+SELECT name, date_of_birth FROM animals;
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SELECT name, date_of_birth FROM animals;
 SAVEPOINT sp1;
+SELECT name, date_of_birth FROM animals;
 UPDATE animals SET weight_kg = weight_kg * -1;
 ROLLBACK TO sp1;
+SELECT name, date_of_birth FROM animals;
 UPDATE animals SET weight_kg = CASE WHEN weight_kg < 0 THEN weight_kg * -1 ELSE weight_kg END;
+SELECT name, date_of_birth FROM animals;
 COMMIT;
+SELECT name, date_of_birth FROM animals;
+
 
 
 SELECT COUNT(name) AS number_of_animals FROM animals;
 
-SELECT COUNT(name) AS tried_to_escape FROM animals WHERE escape_attempts > 0;
+SELECT COUNT(name) AS never_tried_to_escape FROM animals WHERE escape_attempts = 0;
 
 SELECT AVG(weight_kg) AS average_weight FROM animals;
 
