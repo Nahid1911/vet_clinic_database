@@ -42,7 +42,6 @@ SELECT * FROM animals;
 ROLLBACK TO sp1;
 SELECT * FROM animals;
 COMMIT;
-SELECT * FROM animals;
 
 
 BEGIN;
@@ -50,14 +49,15 @@ SELECT name, date_of_birth FROM animals;
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
 SELECT name, date_of_birth FROM animals;
 SAVEPOINT sp1;
-SELECT name, date_of_birth FROM animals;
+SELECT name, weight_kg FROM animals;
 UPDATE animals SET weight_kg = weight_kg * -1;
+SELECT name, weight_kg FROM animals;
 ROLLBACK TO sp1;
-SELECT name, date_of_birth FROM animals;
+SELECT name, weight_kg FROM animals;
 UPDATE animals SET weight_kg = CASE WHEN weight_kg < 0 THEN weight_kg * -1 ELSE weight_kg END;
-SELECT name, date_of_birth FROM animals;
+SELECT name, weight_kg FROM animals;
 COMMIT;
-SELECT name, date_of_birth FROM animals;
+SELECT * FROM animals;
 
 
 
