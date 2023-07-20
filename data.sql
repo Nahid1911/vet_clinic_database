@@ -14,3 +14,33 @@ VALUES ('Charmander', '2020-02-08', 0, true, -11.00),
 ('Boarmon', '2005-06-07', 7, true, 20.40),
 ('Blossom', '1998-10-13', 3, true, 17.00),
 ('Ditto', '2022-05-14', 4, true, 22.00);
+
+
+INSERT INTO owners (full_name, age)
+VALUES ('Sam Smith', 34),
+('ennifer Orwell', 19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 14),
+('Jodie Whittaker', 38);
+
+
+INSERT INTO species (name)
+VALUES ('Pokemon'),
+('Digimon');
+
+BEGIN;
+UPDATE animals AS a SET species_id = s.id FROM species AS s 
+WHERE CASE WHEN a.name LIKE '%mon' THEN 'Digimon' ELSE 'Pokemon' END = s.name;
+COMMIT;
+
+
+BEGIN;
+UPDATE animals AS a SET owners_id = o.id FROM owners AS o
+WHERE CASE WHEN a.name = 'Agumon' THEN 'Sam Smith'
+WHEN a.name = 'Gabumon' OR a.name = 'Pickachu' THEN 'Jennifer Orwell'
+WHEN a.name = 'Devimon' OR a.name = 'Palantmon' THEN 'Bob'
+WHEN a.name = 'Charmander' OR a.name = 'Squirtle' OR a.name = 'Blossom' THEN 'Melody Pond'
+WHEN a.name = 'Angemon' OR a.name = 'Boarmon' THEN 'Dean Winchester'
+END = o.full_name;
+COMMIT;
