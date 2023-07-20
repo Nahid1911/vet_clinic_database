@@ -44,3 +44,12 @@ WHEN a.name = 'Charmander' OR a.name = 'Squirtle' OR a.name = 'Blossom' THEN 'Me
 WHEN a.name = 'Angemon' OR a.name = 'Boarmon' THEN 'Dean Winchester'
 END = o.full_name;
 COMMIT;
+
+
+----------------------Day-4-Project--------------------------------
+
+INSERT INTO vets ( name, age, date_of_graduation)
+VALUES ('William Tatcher', 45, '2000-04-23'),
+('Maisy Smith', 26, '2019-01-17'),
+('Stephanie Mendez', 64, '1981-05-04'),
+('Jack Harkness', 38, '2000-04-23');
