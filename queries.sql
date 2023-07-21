@@ -109,10 +109,11 @@ SELECT a.name AS last_visited_animal FROM visits JOIN vets ON visits.vets_id = v
 
 
 -- How many different animals did Stephanie Mendez see?
-SELECT COUNT(s.name) AS visit_different_animals, vets.name AS doctor_name FROM specializations JOIN vets ON specializations.vets_id = vets.id JOIN species AS s ON specializations.species_id = s.id WHERE vets.name = 'Stephanie Mendez' GROUP BY vets.name;
+SELECT COUNT(a.name) AS visit_different_animals, vt.name AS doctor_name FROM animals AS a JOIN visits AS v ON v.animals_id = a.id JOIN vets AS vt ON v.vets_id = vt.id WHERE vt.name = 'Stephanie Mendez' GROUP BY vt.name;
 
 -- List all vets and their specialties, including vets with no specialties.
 SELECT v.name AS vet_name, s.name AS speciliz_in FROM specializations AS sp FULL JOIN vets AS v ON sp.vets_id = v.id FULL JOIN species AS s ON sp.species_id = s.id;
+
 
 -- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
 SELECT a.name AS animals_name, vets.name AS vets_name FROM visits AS v JOIN vets ON v.vets_id = vets.id JOIN animals AS a ON v.animals_id = a.id WHERE vets.name = 'Stephanie Mendez' AND visit_date BETWEEN '2020-04-01' AND '2020-08-31';
