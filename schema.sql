@@ -50,5 +50,6 @@ vets_id INT REFERENCES vets(id)
 
 CREATE TABLE visits (
 animals_id INT REFERENCES animals(id),
-vets_id INT REFERENCES vets(id)
+vets_id INT REFERENCES vets(id),
+visit_date DATE
 );
