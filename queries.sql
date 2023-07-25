@@ -135,10 +135,11 @@ SELECT s.name AS specialty_required_in_species, vt.name AS doctor_name FROM anim
 
 
 
-
-
 ----------------------------------Module-4---Week-2---Day-1---------------------
 
+
 EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animals_id = 4;
+
 EXPLAIN ANALYZE SELECT vets_id FROM visits where vets_id = 2;
+
 EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
