@@ -133,3 +133,13 @@ SELECT COUNT(visit_date) AS num_visit_with_unspecialize_vet FROM specializations
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
 SELECT s.name AS specialty_required_in_species, vt.name AS doctor_name FROM animals AS a JOIN visits AS v ON a.id = v.animals_id JOIN vets AS vt ON v.vets_id = vt.id JOIN species AS s ON a.species_id = s.id WHERE vt.name = 'Maisy Smith' GROUP BY s.name, vt.name ORDER BY COUNT(s.name) DESC LIMIT 1;
 
+
+
+----------------------------------Module-4---Week-2---Day-1---------------------
+
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animals_id = 4;
+
+EXPLAIN ANALYZE SELECT vets_id FROM visits where vets_id = 2;
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';

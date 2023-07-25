@@ -53,3 +53,10 @@ animals_id INT REFERENCES animals(id),
 vets_id INT REFERENCES vets(id),
 visit_date DATE
 );
+
+----------------------------------Module-4---Week-2---Day-1---------------------
+
+ CREATE INDEX animals_order ON visits (animals_id ASC);
+ CREATE INDEX owner_id_order ON owners (full_name ASC);
+
+ 
